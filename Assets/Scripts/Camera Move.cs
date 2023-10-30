@@ -7,17 +7,23 @@ public class CameraMove : MonoBehaviour
     public Transform target;
     public float followDistance = 8f;
     public float cameraSpeed = 3f;
-    private void LateUpdate() // bra att anv til cameran 
+    private void LateUpdate() // bra att anv till cameran, motverkar att det hackar  
     {
         // Kan läsa av Musen 
         float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * cameraSpeed; 
+        // local = bara i förhållande till sig själv, bara rot på y axeln, dvs rot runt uppsnöret i Unity, 
+        // detta ger oss ett nytt rotationsvärde för y axeln på objektet. 
+
+
         float newRotationY = transform.localEulerAngles.x - Input.GetAxis("Mouse Y") * cameraSpeed; 
+        // Detta gör samma sak fast för upp ner med musen
 
         Vector3 desiredRotation = new Vector3(newRotationY, newRotationX, 0);
         transform.localEulerAngles = desiredRotation;
+        // ta floaterna oavn och bygg ny vektor array av 
 
         Vector3 desiredPosition = target.position - transform.forward * followDistance;
-        transform.position = desiredPosition;
+        transform.position = desiredPosition; // kameran ska följa spelaren 
 
         
 
