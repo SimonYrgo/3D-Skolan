@@ -7,7 +7,11 @@ public class TextManager : MonoBehaviour
 {
     public TMP_Text scoreText;
 
+    public TMP_Text healthText;
+
     private int score = 0;
+
+    private int health = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +23,20 @@ public class TextManager : MonoBehaviour
     void Update()
     {
         scoreText.text = score.ToString();
+
+        healthText.text = health.ToString();
     }
 
     public void AddCoins(int coinValue)
     {
         score = score + coinValue;
     }
+
+    public void playerDamage(int damageTaken)
+    {
+        health = health - damageTaken;
+    }
+
+
+
 }
