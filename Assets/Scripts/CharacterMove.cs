@@ -6,11 +6,13 @@ public class CharacterMove : MonoBehaviour
 {
     public Transform cameraTransform;
     public float movementSpeed = 5f;
+    
 
     Rigidbody body; // skapa en variabel som hämtar 
     float horizontal;
     float vertical;
 
+    public AudioSource jumpSound;
 
 
     void Start()
@@ -22,8 +24,15 @@ public class CharacterMove : MonoBehaviour
    
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal"); // kollar ad gör til -1, 0, 1
+        horizontal = Input.GetAxisRaw("Horizontal"); // kollar A och D tangenter och gör till -1, 0, 1 värden av input -1 vänster 0 stilla , 1 höger
         vertical = Input.GetAxisRaw("Vertical"); // kollar ws tangenter och ger värde -1, 0, 1 
+       
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            body.AddForce(Vector3.up * 500);
+            jumpSound.Play();
+            
+        }
     }
 
     private void FixedUpdate()

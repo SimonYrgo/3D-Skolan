@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TextManager : MonoBehaviour
 {
@@ -35,6 +36,12 @@ public class TextManager : MonoBehaviour
     public void playerDamage(int damageTaken)
     {
         health = health - damageTaken;
+
+        if (health ==  0) 
+        {
+            SceneManager.LoadScene(3);
+                
+        }
     }
 
 
