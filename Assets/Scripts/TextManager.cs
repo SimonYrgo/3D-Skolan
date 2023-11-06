@@ -44,6 +44,12 @@ public class TextManager : MonoBehaviour
         }
     }
 
+    public void playerHeal(int healTaken)
+    {
+        health = health + healTaken;
+
+    }
+
 
 
 }
